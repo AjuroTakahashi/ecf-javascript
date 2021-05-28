@@ -28,12 +28,14 @@
                     <select id="select" class="form-select">
                         <option value="artist">Artist</option>
                         <option value="recording">Title</option>
-                        <option value="release-group">Album</option>
+                        <option value="release">Album</option>
                         <option value="everything">Everything</option>
                     </select>
                 </div>
                 <button class="btn btn-outline-primary col-2" id="search-button">Search</button>
             </form>
+            <div class="text-end fst-italic" id="results-count">
+            </div>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -47,10 +49,91 @@
                 <tbody id="tbody">
                 </tbody>
             </table>
-            <div class="text-center" id="truc">
-                Entrez un élément de recherche.
+            <div class="text-center">
+                <p id="instructions">
+                    Enter your search input.
+                </p>
+                <div class="lds-ring d-none" id="spinner">
+                    <div></div><div></div><div></div><div></div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="modal fade" id="modal" aria-hidden="true" tabindex="-1">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="m-header"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                    <div class="modal-body" id="m-body">
+                        <h3>Informations</h3>
+                        <hr>
+                        <p>
+                            <span class="fw-bold">Title :</span>  
+                            <span id="m-title"></span>
+                        </p>
+                        <hr>
+                        <p>
+                            <span class="fw-bold">Artist : </span>
+                            <span id="m-artist"></span>
+                        </p>
+                        <hr>
+                        <p>
+                            <span class="fw-bold">Album : </span>
+                            <span id="m-album"></span>
+                        </p>
+                        <hr>
+                        <p>
+                            <span class="fw-bold">Genre : </span>
+                            <span id="m-genre"></span>
+                        </p>
+                        <hr>
+                        <p>
+                            <span class="fw-bold">Length : </span>
+                            <span id="m-length"></span>
+                        </p>
+                        <hr>
+                        <div class="row">
+                            <h5>Note : </h5>
+                            <p id="m-note">
+                                <svg class="star-svg" viewBox="0 0 180 32">
+                                    <use class="star" xlink:href="#icon-star" x="0" y="0" />
+                                    <use class="star" xlink:href="#icon-star" x="36" y="0"  />      
+                                    <use class="star" xlink:href="#icon-star" x="72" y="0" /> 
+                                    <use class="star" xlink:href="#icon-star" x="108" y="0" />       
+                                    <use class="star" xlink:href="#icon-star" x="144" y="0" />  
+                                </svg> 
+                            </p>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <h5>Cover :</h5>
+                            <div id="covers" class="row justify-content-center"></div>
+                            <div class="lds-ring d-none" id="cover-spinner">
+                                <div></div><div></div><div></div><div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
             </div>
         </div>
+    <svg class="star-source" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <g id="icon-star">
+                <path d="M20.388,10.918L32,12.118l-8.735,7.749L25.914,31.4l-9.893-6.088L6.127,31.4l2.695-11.533L0,12.118
+                l11.547-1.2L16.026,0.6L20.388,10.918z" />
+            </g>
+
+            <linearGradient id="svgGradient">
+                <stop id="first-offset" stop-opacity="1" offset="60%" stop-color="#333"></stop>
+                <stop id="second-offset" stop-opacity="0" offset="60%"></stop>
+            </linearGradient>    
+        </defs>
+    </svg>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
